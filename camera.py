@@ -1,20 +1,30 @@
 from picamera2 import Picamera2
-from picamera2.encoders import H264Encoder
-#from libcamera import controls
+from picamera2.encoders import H264Encoder, Quality
+from picamera2.outputs import FfmpegOutput
 from datetime import datetime
 import time
 
+# picam settings
 picam2 = Picamera2()
 video_config = picam2.create_video_configuration()
 picam2.configure(video_config)
 encoder = H264Encoder(10000000)
+output = FfmpegOutput("-f hls -hls_time 4 -hls_list_size 5 -hls_flags delete_segments -hls_allow_cache 0 stream.m3u8")
+#output = FfmpegOutput("-f dash -window_size 5 -use_template 1 -use_timeline 1 stream.mpd")
 
+# time
 def time_now():
-    datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    i = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    return i
 
-def get_video(output_file, format, duration):
-    #libcamera-vid -t duration -o output_file.format
-    #libcamera-vid -t 20000 -o  time_now().mp4
+# record video for x time
+def rec_video(output_file, format, duration):
     picam2.start_recording(encoder, f'{output_file}.{format}')
     time.sleep(duration)
     picam2.stop_recording()
+
+# start and stop video streaming
+def video_stream(action):
+    if action=='start': picam2.start_recording(encoder, output)
+    elif action=="stop": picam2.stop_recording()
+    else: print('ERROR: No command.')
