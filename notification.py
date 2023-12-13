@@ -47,3 +47,6 @@ def request_image_upload_url(access_token, image):
     return(r['file_url'])
 
 # Send Pushbullet notification to hawthorne-doorbell channel_tag
+def send_doorbell_image_notification(access_token, channel_tag, image_url):
+    resp =requests.post('https://api.pushbullet.com/v2/pushes', data=json.dumps({'body': 'There\'s somebody at the door!', 'title': 'Ding-dong!', 'type': 'link', 'channel_tag': channel_tag, 'url': image_url}), headers={'Authorization': 'Bearer ' + access_token, 'Content-Type': 'application/json'})
+    
