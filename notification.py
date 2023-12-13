@@ -12,7 +12,7 @@
 #  "name": "Elon Musk"
 #}
 
-# curl --header 'Access-Token: o.K8sYAATHDyYjX7eURSn0g6z5wSnbnkXD' https://api.pushbullet.com/v2/pushes -d type=note&title="dingdong"
+# curl --header 'Access-Token: o.K8sYAATHDyYjX7eURSn0g6z5wSnbnkXD' https://api.pushbullet.com/v2/pushes -d type=note&title="dingdong-test"&channel_tag="hawthorne-doorbell"
 
 
 

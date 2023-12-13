@@ -17,14 +17,24 @@ def time_now():
     i = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     return i
 
+
 # record video for x time
 def rec_video(output_file, format, duration):
     picam2.start_recording(encoder, f'{output_file}.{format}')
     time.sleep(duration)
     picam2.stop_recording()
 
+
 # start and stop video streaming
 def video_stream(action):
     if action=='start': picam2.start_recording(encoder, output)
     elif action=="stop": picam2.stop_recording()
     else: print('ERROR: No command.')
+    
+
+# take a picture
+def take_picture(file_name):
+    picam2.start()
+    time.sleep(2)
+    picam2.capture_file(f'{file_name}.jpg')
+    picam2.close()
