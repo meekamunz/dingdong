@@ -21,6 +21,15 @@
 #
 #     https://api.pushbullet.com/v2/upload-request
 
+import requests, json
+
+# Test Config
+access_token = 'o.K8sYAATHDyYjX7eURSn0g6z5wSnbnkXD'
+image = 2023-12-13_21-56-16.jpg
+
+# It's actually a 3 step process. You send a file upload request to pushbullet, they respond with an amazon URL, you send the file to amazon, and then send a pushbullet notification to a device.
+
+POST https://api.pushbullet.com/v2/upload-request
 
 
 import requests, json
