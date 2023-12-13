@@ -11,7 +11,7 @@ from functions import time_now
 access_token = 'o.K8sYAATHDyYjX7eURSn0g6z5wSnbnkXD'
 channel_tag = 'hawthorne-doorbell'
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     # Doorbell trigger here
     doorbell_image = take_picture(time_now())
     image_url_link = request_image_upload_url(access_token, doorbell_image)

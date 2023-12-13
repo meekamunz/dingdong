@@ -31,3 +31,4 @@ def take_picture(file_name):
     time.sleep(2)
     picam2.capture_file(f'{file_name}.jpg')
     picam2.close()
+    return (f'{file_name}.jpg')
