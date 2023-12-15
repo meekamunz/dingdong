@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from notification import request_image_upload_url, send_doorbell_image_notification
 from camera import take_picture
 from functions import time_now
@@ -17,6 +18,7 @@ logging.basicConfig(
 # get arguments from command line
 # Get RF notification
 # Sort out file locations (web-server)
+# File cleanup
 
 # Temp Testing Data
 # access_token = 'o.K8sYAATHDyYjX7eURSn0g6z5wSnbnkXD'
