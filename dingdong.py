@@ -2,6 +2,7 @@
 from notification import request_image_upload_url, send_doorbell_image_notification
 from camera import take_picture
 from functions import time_now
+from rf_trigger import doorbell_trigger
 import sys, logging
 
 # Logging Configuration
@@ -47,10 +48,10 @@ def check_args():
 
 def main():
     access_token, channel_tag = check_args()
-    # Doorbell trigger here
-    doorbell_image = take_picture(time_now())
-    image_url_link = request_image_upload_url(access_token, doorbell_image)
-    send_doorbell_image_notification(access_token, channel_tag, image_url_link)
+    if doorbell_trigger() == False:
+        doorbell_image = take_picture(time_now())
+        image_url_link = request_image_upload_url(access_token, doorbell_image)
+        send_doorbell_image_notification(access_token, channel_tag, image_url_link)
 
 if __name__ == '__main__':
     logging.info('Starting the application')
