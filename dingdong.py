@@ -21,10 +21,6 @@ logging.basicConfig(
 # Sort out file locations (web-server)
 # File cleanup
 
-# Temp Testing Data
-# access_token = 'o.K8sYAATHDyYjX7eURSn0g6z5wSnbnkXD'
-# channel_tag = 'hawthorne-doorbell'
-
 # Arguments
 # Arguments
 def check_args():
