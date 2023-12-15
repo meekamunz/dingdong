@@ -29,7 +29,7 @@ logging.basicConfig(
 # Arguments
 def check_args():
     num_args = len(sys.argv)
-    if num_args > 2:
+    if num_args > 3:
         # Access Token from command line
         access_token = sys.argv[1]
         logging.debug(f'Access Token: {access_token}')
@@ -37,6 +37,10 @@ def check_args():
         # Channel Tag from command line
         channel_tag = sys.argv[2]
         logging.debug(f'Channel Tag: {channel_tag}')
+        
+        # RF signal ID
+        rf_signal_id = sys.argv[3]
+        logging.debug(f'RF Signal ID: {rf_signal_id}')
         
         # return access_token, channel_tag
         return access_token, channel_tag
@@ -47,8 +51,8 @@ def check_args():
 
 
 def main():
-    access_token, channel_tag = check_args()
-    if doorbell_trigger() == False:
+    access_token, channel_tag, rf_signal_id = check_args()
+    if doorbell_trigger(rf_signal_id) == False:
         doorbell_image = take_picture(time_now())
         image_url_link = request_image_upload_url(access_token, doorbell_image)
         send_doorbell_image_notification(access_token, channel_tag, image_url_link)
